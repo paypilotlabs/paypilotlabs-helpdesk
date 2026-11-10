@@ -1,10 +1,13 @@
 app_name = "helpdesk"
-app_title = "Helpdesk"
-app_publisher = "Frappe Technologies"
+from helpdesk.brand import BRAND
+
+app_title = BRAND["product_name"]
+app_logo_url = BRAND["logo"]
+app_publisher = BRAND["company"]
 app_description = "Customer Service Software"
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
-app_email = "hello@frappe.io"
+app_email = BRAND["email"]
 app_license = "AGPLv3"
 required_apps = ["telephony"]
 require_type_annotated_api_methods = True
@@ -12,8 +15,8 @@ require_type_annotated_api_methods = True
 add_to_apps_screen = [
     {
         "name": "helpdesk",
-        "logo": "/assets/helpdesk/desk/favicon.svg",
-        "title": "Helpdesk",
+        "logo": BRAND["logo"],
+        "title": BRAND["product_name"],
         "route": "/helpdesk",
         "has_permission": "helpdesk.api.permission.has_app_permission",
     }
