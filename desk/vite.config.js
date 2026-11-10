@@ -58,7 +58,7 @@ export default defineConfig(async ({ mode }) => {
         manifest: {
           display: "standalone",
           name: "PayPilotLabs Service",
-          short_name: "Helpdesk",
+          short_name: "Service",
           start_url: "/helpdesk",
           description:
             "Modern, Streamlined, Free and Open Source Customer Service Software",
