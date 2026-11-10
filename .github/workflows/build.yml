@@ -1,0 +1,64 @@
+name: Build Container Image
+on:
+  push:
+    tags:
+      - "v15.*"
+      - "v16.*"
+
+jobs:
+  build:
+    name: Build
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+
+    steps:
+      - name: Checkout Entire Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set Branch
+        run: |
+          # v16.2.0 -> version-16
+          major="${GITHUB_REF_NAME#v}"
+          echo "FRAPPE_BRANCH=version-${major%%.*}" >> $GITHUB_ENV
+          echo '[{"url": "https://github.com/frappe/telephony","branch": "develop"},{"url": "https://github.com/frappe/helpdesk","branch": "'"$GITHUB_REF_NAME"'"}]' > apps.json
+
+      - uses: actions/checkout@v4
+        with:
+          repository: frappe/frappe_docker
+          path: builds
+
+      - name: Build
+        uses: docker/build-push-action@v6
+        with:
+          load: true
+          context: builds
+          file: builds/images/layered/Containerfile
+          tags: >
+            ghcr.io/${{ github.repository }}:${{ github.ref_name }},
+            ghcr.io/${{ github.repository }}:${{ env.FRAPPE_BRANCH }}
+          build-args: |
+            "FRAPPE_BRANCH=${{ env.FRAPPE_BRANCH }}"
+          secret-files: |
+            apps_json=apps.json
+
+      - name: Verify apps are installed
+        run: |
+          apps=$(docker run --rm --entrypoint ls ghcr.io/${{ github.repository }}:${{ env.FRAPPE_BRANCH }} apps)
+          echo "$apps"
+          grep -qx helpdesk <<< "$apps" && grep -qx telephony <<< "$apps"
+
+      - name: Push
+        run: docker push --all-tags ghcr.io/${{ github.repository }}
