@@ -45,6 +45,9 @@ jobs:
         with:
           repository: paypilotlabs/paypilotlabs-framework
           path: _framework
+          # While paypilotlabs-framework is private, CI needs a read-only token saved as the
+          # FRAMEWORK_READ_TOKEN secret. Once the framework is public, the default token works.
+          token: ${{ secrets.FRAMEWORK_READ_TOKEN || github.token }}
           persist-credentials: false
       - name: Place the framework where a bench keeps it (../frappe)
         run: mv "$GITHUB_WORKSPACE/_framework" "$GITHUB_WORKSPACE/../frappe"
