@@ -40,8 +40,18 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: "22"
+      - name: Check out PayPilotLabs Framework (the frontend uses its shared UI package)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: paypilotlabs/paypilotlabs-framework
+          path: _framework
+          persist-credentials: false
+      - name: Place the framework where a bench keeps it (../frappe)
+        run: mv "$GITHUB_WORKSPACE/_framework" "$GITHUB_WORKSPACE/../frappe"
       - name: Stub bench config the build reads
-        run: mkdir -p "$GITHUB_WORKSPACE/../../sites" && echo '{}' > "$GITHUB_WORKSPACE/../../sites/common_site_config.json"
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/../../sites"
+          echo '{"socketio_port": 9000, "webserver_port": 8000}' > "$GITHUB_WORKSPACE/../../sites/common_site_config.json"
       - name: Build desk
         working-directory: desk
         env:
