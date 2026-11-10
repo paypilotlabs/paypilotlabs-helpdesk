@@ -359,8 +359,6 @@ export interface HDCustomer extends DocType {
   customer_type?: 'Company' | 'Individual' | 'Partnership';
   /** Domain: Data */
   domain?: string;
-  /** ERPNext Customer: Data */
-  erpnext_customer?: string;
   /** Contacts: Table (HD Customer Member) */
   contacts: HDCustomerMember[];
   /** Mobile No: Data */

@@ -7,16 +7,6 @@ from frappe.core.api.user_invitation import invite_by_email
 from frappe.model.document import Document
 from frappe.utils import validate_email_address
 
-from helpdesk.integrations.erpnext.utils import (
-    cascade_rename,
-    in_cascade,
-    map_source_to_target_values,
-)
-from helpdesk.integrations.erpnext.utils import should_sync as should_sync_with_erpnext
-from helpdesk.integrations.erpnext.utils import (
-    sync_related_fields,
-    validate_rename_conflict,
-)
 from helpdesk.utils import agent_only, get_customers, is_agent
 
 CUSTOMER_ROLES = ("HD Customer", "HD Customer Manager")
@@ -373,65 +363,9 @@ class HDCustomer(Document):
             )
         return res
 
-    def after_insert(self):
-        if should_sync_with_erpnext() and not self.flags.get("ignore_erpnext_sync"):
-            self.create_customer_in_erpnext()
-
-    def create_customer_in_erpnext(self):
-        if self.erpnext_customer:
-            return
-
-        erpnext_customer_exists = frappe.db.exists(
-            "Customer", {"hd_customer": self.name}
-        )
-        if erpnext_customer_exists:
-            return
-
-        # create a new customer in ERPNext with the same name as the HD Customer and link them together
-        erp_doc = frappe.get_doc(
-            {
-                "doctype": "Customer",
-                "customer_name": self.customer_name,
-                "hd_customer": self.name,
-                **map_source_to_target_values(self),
-            }
-        )
-        erp_doc.flags.ignore_erpnext_sync = True
-        erp_doc.insert(ignore_permissions=True)
-        frappe.db.set_value(
-            "HD Customer",
-            self.name,
-            "erpnext_customer",
-            erp_doc.name,
-            update_modified=False,
-        )
-
-    def on_update(self):
-        if not should_sync_with_erpnext() or self.flags.get("ignore_erpnext_sync"):
-            return
-
-        sync_related_fields(self)
-
-    def before_rename(self, olddn, newdn, merge=False):
-        validate_rename_conflict("HD Customer", olddn, newdn, merge)
-
-    def after_rename(self, olddn, newdn, merge=False):
-        cascade_rename("HD Customer", olddn, newdn, merge)
-
     def on_trash(self):
         self.unlink_tickets()
         self.unlink_invitations()
-        if in_cascade() or not should_sync_with_erpnext():
-            return
-
-        erpnext_customer = frappe.db.get_value(
-            "Customer", {"hd_customer": self.name}, "name"
-        )
-        if erpnext_customer:
-            # Clear the back-link first so CustomCustomer.on_trash won't try to
-            # delete this HD Customer again (it's already being deleted).
-            frappe.db.set_value("Customer", erpnext_customer, "hd_customer", None)
-            frappe.delete_doc("Customer", erpnext_customer, ignore_permissions=True)
 
     def unlink_tickets(self) -> None:
         """Delete or detach the tickets linked to this customer on delete."""

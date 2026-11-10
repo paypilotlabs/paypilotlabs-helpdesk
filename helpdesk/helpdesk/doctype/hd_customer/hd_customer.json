@@ -11,7 +11,6 @@
   "customer_name",
   "customer_type",
   "domain",
-  "erpnext_customer",
   "country",
   "column_break_fead",
   "primary_contact",
@@ -57,13 +56,6 @@
    "fieldname": "contact_html",
    "fieldtype": "HTML",
    "label": "Contact HTML"
-  },
-  {
-   "fieldname": "erpnext_customer",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "ERPNext Customer",
-   "read_only": 1
   },
   {
    "fieldname": "contacts",

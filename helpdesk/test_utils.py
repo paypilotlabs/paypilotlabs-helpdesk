@@ -23,7 +23,6 @@ from helpdesk.api.banners import BANNERS, dismiss_banner
 from helpdesk.api.dashboard import HelpdeskDashboard
 from helpdesk.api.settings.field_dependency import create_update_field_dependency
 from helpdesk.consts import DEFAULT_SLA, DEFAULT_TICKET_TEMPLATE
-from helpdesk.integrations.erpnext.utils import create_customer_field
 from helpdesk.integrations.frappe_cloud import TRIAL_DISMISSED_KEY, forget_trial
 from helpdesk.utils import get_customers, is_frappe_version
 
@@ -48,8 +47,6 @@ def before_tests():
     make_new_sla()
     make_test_objects("Email Domain", reset=True)
     create_email_account()
-    create_customer_field()
-    complete_erpnext_setup()
     frappe.db.commit()  # nosemgrep
 
 
@@ -773,38 +770,6 @@ def make_team(team_name, members=[], disabled=False):
     team.insert(ignore_permissions=True)
     return team
 
-
-def complete_erpnext_setup():
-    """
-    Run the ERPNext setup wizard once, so fixtures like Warehouse Type
-    exist before test records (e.g. Company) are created.
-    """
-    if "erpnext" not in frappe.get_installed_apps():
-        return
-    if frappe.get_all("Company", limit=1):
-        return
-
-    from frappe.desk.page.setup_wizard.setup_wizard import setup_complete
-
-    year = datetime.today().year
-    setup_complete(
-        {
-            "currency": "INR",
-            "full_name": "Test User",
-            "company_name": "_Test Company",
-            "timezone": "Asia/Kolkata",
-            "company_abbr": "_TC",
-            "industry": "Manufacturing",
-            "country": "India",
-            "fy_start_date": f"{year}-01-01",
-            "fy_end_date": f"{year}-12-31",
-            "language": "english",
-            "company_tagline": "Testing",
-            "email": "test@erpnext.com",
-            "password": "test",
-            "chart_of_accounts": "Standard",
-        }
-    )
 
 
 def upload_test_file(file_name: str) -> str:

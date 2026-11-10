@@ -145,7 +145,7 @@ function accountCommands(): Command[] {
       group: GROUP.account,
       icon: LucideSettings,
       hint: "Mod+,",
-      keywords: "preferences email agents teams sla telephony erpnext",
+      keywords: "preferences email agents teams sla telephony",
       children: () => settingsChildren(),
     },
     {
