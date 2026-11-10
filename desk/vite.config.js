@@ -57,7 +57,7 @@ export default defineConfig(async ({ mode }) => {
         },
         manifest: {
           display: "standalone",
-          name: "Frappe Helpdesk",
+          name: "PayPilotLabs Service",
           short_name: "Helpdesk",
           start_url: "/helpdesk",
           description:

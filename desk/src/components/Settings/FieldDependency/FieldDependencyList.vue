@@ -15,7 +15,7 @@
           )
         }}
         <a
-          href="https://docs.frappe.io/helpdesk/field-dependency"
+          href="https://paypilotlabs.com/roadmap/"
           target="_blank"
           class="underline"
           >{{ __("here.") }}</a

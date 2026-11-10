@@ -120,7 +120,7 @@ const agentPortalDropdown = computed(() => [
   {
     icon: "lucide-book-open",
     label: __("Docs"),
-    onClick: () => window.open("https://docs.frappe.io/helpdesk"),
+    onClick: () => window.open("https://paypilotlabs.com/roadmap/"),
   },
   {
     label: __("Log out"),

@@ -29,7 +29,7 @@
         )
       }}
       <a
-        href="https://docs.frappe.io/helpdesk/customization/perm-levels-in-helpdesk"
+        href="https://paypilotlabs.com/roadmap/"
         target="_blank"
         class="underline"
         >{{ __("See how") }}</a

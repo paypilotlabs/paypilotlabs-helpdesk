@@ -49,9 +49,9 @@
     v-model="showHelpModal"
     v-model:articles="articles"
     appName="helpdesk"
-    title="Frappe Helpdesk"
+    title="PayPilotLabs Service"
     :logo="logo"
-    docsLink="https://docs.frappe.io/helpdesk"
+    docsLink="https://paypilotlabs.com/roadmap/"
     :afterSkip="(step: string) => capture('onboarding_step_skipped_' + step)"
     :afterSkipAll="() => capture('onboarding_steps_skipped')"
     :afterReset="(step: string) => capture('onboarding_step_reset_' + step)"
@@ -172,7 +172,7 @@ const agentPortalDropdown = computed(() => [
   {
     icon: "lucide-book-open",
     label: __("Docs"),
-    onClick: () => window.open("https://docs.frappe.io/helpdesk"),
+    onClick: () => window.open("https://paypilotlabs.com/roadmap/"),
   },
   isCloudSettingsAvailable()
     ? {
@@ -432,7 +432,7 @@ const articles = ref([
     ],
   },
   {
-    title: __("Frappe Helpdesk Mobile"),
+    title: __("PayPilotLabs Service Mobile"),
     opened: false,
     subArticles: [
       { name: "pwa-installation", title: __("Mobile App Installation") },
