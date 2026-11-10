@@ -8,4 +8,4 @@ Configuration for docs
 
 
 def get_context(context):
-    context.brand_html = "PayPilotLabs Service"
+    context.brand_html = "PayPilotLabs Helpdesk"

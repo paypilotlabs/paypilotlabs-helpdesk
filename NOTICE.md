@@ -1,6 +1,6 @@
 # NOTICE
 
-PayPilotLabs Service is based on [frappe/helpdesk](https://github.com/frappe/helpdesk) v16.1.0, modified by PayPilotLabs since 2026-11-10, licensed under AGPL-3.0.
+PayPilotLabs Helpdesk is based on [frappe/helpdesk](https://github.com/frappe/helpdesk) v16.1.0, modified by PayPilotLabs since 2026-11-10, licensed under AGPL-3.0.
 
 - The original copyright notices, licence file and attributions stay in place. Code written by Frappe Technologies Pvt. Ltd. and contributors remains their copyright.
 - PayPilotLabs changes are listed in this repository's git history (every commit after the first).

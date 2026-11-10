@@ -1,8 +1,8 @@
-# Copilot Instructions for PayPilotLabs Service
+# Copilot Instructions for PayPilotLabs Helpdesk
 
 ## Project Overview
 
-PayPilotLabs Service is an open-source ticket management tool built on the [PayPilotLabs](https://github.com/frappe/frappe) (Python backend) and [Frappe UI](https://github.com/frappe/frappe-ui) (Vue.js frontend). It provides agent/customer portals, SLAs, assignment rules, a knowledge base, and saved replies.
+PayPilotLabs Helpdesk is an open-source ticket management tool built on the [PayPilotLabs](https://github.com/frappe/frappe) (Python backend) and [Frappe UI](https://github.com/frappe/frappe-ui) (Vue.js frontend). It provides agent/customer portals, SLAs, assignment rules, a knowledge base, and saved replies.
 
 ## Tech Stack & Architecture
 
@@ -368,7 +368,7 @@ const ticket = createDocumentResource({
 
 - [README.md](../README.md) — Full setup and feature list
 - [Frappe Docs](https://frappeframework.com/docs/) — Framework documentation
-- [PayPilotLabs Service Docs](https://paypilotlabs.com/roadmap/) — Project-specific docs
+- [PayPilotLabs Helpdesk Docs](https://paypilotlabs.com/roadmap/) — Project-specific docs
 - [Vue 3 Style Guide](https://vuejs.org/style-guide/) — Vue.js best practices
 - [Tailwind CSS](https://tailwindcss.com/docs) — Utility-first CSS framework
 

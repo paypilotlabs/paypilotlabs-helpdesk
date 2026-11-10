@@ -119,7 +119,7 @@ class HDArticle(Document):
     def title_slug(self) -> str:
         """
         Generate slug from article title.
-        Example: "Introduction to PayPilotLabs Service" -> "introduction-to-frappe-helpdesk"
+        Example: "Introduction to PayPilotLabs Helpdesk" -> "introduction-to-frappe-helpdesk"
 
         :return: Generated slug
         """

@@ -5,8 +5,8 @@ apps-screen tile. Logo files live in helpdesk/public/images/paypilotlabs/.
 """
 
 BRAND = {
-	"product_name": "PayPilotLabs Service",
-	"short_name": "Service",
+	"product_name": "PayPilotLabs Helpdesk",
+	"short_name": "Helpdesk",
 	"company": "PayPilotLabs",
 	"website": "https://paypilotlabs.com",
 	"support_url": "https://paypilotlabs.com/roadmap/",

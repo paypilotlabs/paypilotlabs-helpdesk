@@ -1,4 +1,4 @@
-# PayPilotLabs Service
+# PayPilotLabs Helpdesk
 
 Customer service desk: tickets with SLAs, an agent workspace, a customer portal, a knowledge base, canned replies and phone support through PayPilotLabs Telephony.
 
@@ -6,13 +6,13 @@ By [PayPilotLabs](https://paypilotlabs.com). Support and requests: https://paypi
 
 ## Run it
 
-PayPilotLabs Service runs as a Frappe v16 site in Docker: MariaDB 11.8, Redis, and an image holding frappe + telephony + helpdesk.
+PayPilotLabs Helpdesk runs as a Frappe v16 site in Docker: MariaDB 11.8, Redis, and an image holding frappe + telephony + helpdesk.
 
 1. Push this repo and its companions (frappe, telephony) to `github.com/paypilotlabs` (private is fine).
 2. Build the image: `GITHUB_TOKEN=<token with read access> ./docker/build.sh`
 3. Start it: `docker compose -f docker/docker-compose.yml up -d`
 4. Watch the first-run setup: `docker compose -f docker/docker-compose.yml logs -f create-site` (wait for it to exit 0).
-5. Open http://service.localhost:8080 and log in as `Administrator` / `admin`. Change the password straight away.
+5. Open http://helpdesk.localhost:8080 and log in as `Administrator` / `admin`. Change the password straight away.
 
 Stop with `docker compose -f docker/docker-compose.yml down` (add `-v` to delete the data).
 See NOTICE.md for the licence and origin.

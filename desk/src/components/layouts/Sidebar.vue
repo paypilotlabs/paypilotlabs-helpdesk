@@ -49,7 +49,7 @@
     v-model="showHelpModal"
     v-model:articles="articles"
     appName="helpdesk"
-    title="PayPilotLabs Service"
+    title="PayPilotLabs Helpdesk"
     :logo="logo"
     docsLink="https://paypilotlabs.com/roadmap/"
     :afterSkip="(step: string) => capture('onboarding_step_skipped_' + step)"
@@ -433,7 +433,7 @@ const articles = ref([
     ],
   },
   {
-    title: __("PayPilotLabs Service Mobile"),
+    title: __("PayPilotLabs Helpdesk Mobile"),
     opened: false,
     subArticles: [
       { name: "pwa-installation", title: __("Mobile App Installation") },
