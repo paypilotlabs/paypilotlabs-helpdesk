@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://github.com/paypilotlabs/telephony.git",
+    "branch": "main"
+  },
+  {
+    "url": "https://github.com/paypilotlabs/helpdesk.git",
+    "branch": "main"
+  }
+]
