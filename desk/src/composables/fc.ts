@@ -24,8 +24,8 @@ export const confirmLoginToFrappeCloud = () => {
   const { $dialog } = globalStore();
 
   $dialog({
-    title: "Login to Frappe Cloud?",
-    message: "Are you sure you want to login to your Frappe Cloud dashboard?",
+    title: "Open hosting dashboard?",
+    message: "Are you sure you want to open your hosting dashboard?",
     actions: [
       {
         label: "Confirm",

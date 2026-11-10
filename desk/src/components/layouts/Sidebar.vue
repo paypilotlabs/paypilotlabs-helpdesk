@@ -181,10 +181,11 @@ const agentPortalDropdown = computed(() => [
         onClick: openBillingSettings,
       }
     : {
-        label: __("Login to Frappe Cloud"),
+        label: __("Hosting dashboard"),
         icon: FrappeCloudIcon,
         onClick: () => confirmLoginToFrappeCloud(),
-        condition: () => !isMobileView.value && window.is_fc_site,
+        // PayPilotLabs is self-hosted: the upstream hosting login is never shown
+        condition: () => false,
       },
   {
     label: __("Shortcuts"),

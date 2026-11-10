@@ -154,7 +154,7 @@ export const tabs = computed(() => {
       ],
     },
     {
-      label: __("Frappe Cloud"),
+      label: __("Hosting"),
       condition: () => isCloudSettingsAvailable(),
       items: [
         {
