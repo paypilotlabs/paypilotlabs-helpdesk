@@ -49,6 +49,7 @@ import { mobileSidebarOpened as sidebarOpened } from "@/composables/mobile";
 import { useApps } from "@/composables/useApps";
 import { __ } from "@/translation";
 import AppSidebar from "./AppSidebar.vue";
+import { sourceCodeMenuOption } from "./layoutSettings";
 import { useAgentStatusStore } from "@/stores/agentStatus";
 
 const { colorScheme, toggleColorScheme } = useColorScheme();
@@ -94,6 +95,7 @@ const themeMenuItem = computed(() => ({
 }));
 
 const customerPortalDropdown = computed(() => [
+  sourceCodeMenuOption,
   {
     label: __("Log out"),
     icon: "lucide-log-out",
@@ -122,6 +124,7 @@ const agentPortalDropdown = computed(() => [
     label: __("Docs"),
     onClick: () => window.open("https://paypilotlabs.com/roadmap/"),
   },
+  sourceCodeMenuOption,
   {
     label: __("Log out"),
     icon: "lucide-log-out",

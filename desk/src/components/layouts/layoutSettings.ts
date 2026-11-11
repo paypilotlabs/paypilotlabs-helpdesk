@@ -7,12 +7,21 @@ import { OrganizationsIcon } from "../icons";
 import PhoneIcon from "../icons/PhoneIcon.vue";
 import LucideHome from "~icons/lucide/home";
 import { __ } from "@/translation";
+import LucideCode from "~icons/lucide/code";
 
 /**
  * Shared rather than local to Sidebar.vue: the command palette opens it too, and
  * the palette is the discovery surface for the shortcut system.
  */
 export const showShortcutsModal = ref(false);
+
+// AGPL-3.0 section 13: offer every network user the source of this modified version.
+export const sourceCodeMenuOption = {
+  label: __("Source code"),
+  icon: LucideCode,
+  onClick: () =>
+    window.open("https://github.com/paypilotlabs/paypilotlabs-helpdesk"),
+};
 
 export const agentPortalSidebarOptions = [
   {
