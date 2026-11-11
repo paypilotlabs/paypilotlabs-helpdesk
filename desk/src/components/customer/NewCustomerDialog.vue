@@ -20,7 +20,7 @@
             type="text"
             :label="__('Name')"
             :required="true"
-            placeholder="Frappe"
+            placeholder="Acme"
             v-model="state.name"
           />
 
@@ -46,7 +46,7 @@
           <FormControl
             type="text"
             :label="__('Domain')"
-            placeholder="frappe.io"
+            placeholder="acme.com"
             v-model="state.domain"
           >
             <template #prefix>

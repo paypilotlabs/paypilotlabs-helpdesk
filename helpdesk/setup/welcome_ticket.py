@@ -9,7 +9,7 @@ Hey {{ first_name }} 👋,
 <br><br>
 We thought we'd use this space to give you a quick walkthrough while you're here. 🙂
 <br><br>
-This is a sample ticket we created to show you how Frappe Helpdesk works.
+This is a sample ticket we created to show you how PayPilotLabs Helpdesk works.
 <br><br>
 Getting started is easy. In the main <b>Ticket activity area</b>, when you reply to a ticket your response shows up directly below in the activity thread. This way you can keep track of all your ticket activities in one single place. ✨
 <br>
@@ -46,7 +46,7 @@ Feel free to click around and explore our product.
 If you need help, reach out to us here: <a href="https://paypilotlabs.com/roadmap/" style="color: #3b82f6;">https://paypilotlabs.com/roadmap/</a>
 <br><br>
 Cheers,<br>
-Team Frappe
+Team PayPilotLabs
 </div>
 """
 

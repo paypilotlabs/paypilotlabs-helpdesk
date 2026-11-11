@@ -167,7 +167,7 @@ const agentPortalDropdown = computed(() => [
   {
     icon: "lucide-life-buoy",
     label: __("Support"),
-    onClick: () => window.open("https://t.me/frappedesk"),
+    onClick: () => window.open("https://paypilotlabs.com/roadmap/"),
   },
   {
     icon: "lucide-book-open",
