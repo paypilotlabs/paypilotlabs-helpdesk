@@ -102,7 +102,7 @@ import { computed, h, markRaw, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import AppSidebar from "./AppSidebar.vue";
 import TrialCard from "./TrialCard.vue";
-import { showShortcutsModal } from "./layoutSettings";
+import { showShortcutsModal, sourceCodeMenuOption } from "./layoutSettings";
 
 import { useShortcut } from "@/composables/shortcuts";
 import { __ } from "@/translation";
@@ -141,6 +141,7 @@ const themeMenuItem = computed(() => ({
 const isFCSite = ref(window.is_fc_site);
 
 const customerPortalDropdown = computed(() => [
+  sourceCodeMenuOption,
   {
     group: __("Danger"),
     hideLabel: true,
@@ -167,13 +168,14 @@ const agentPortalDropdown = computed(() => [
   {
     icon: "lucide-life-buoy",
     label: __("Support"),
-    onClick: () => window.open("https://t.me/frappedesk"),
+    onClick: () => window.open("https://paypilotlabs.com/roadmap/"),
   },
   {
     icon: "lucide-book-open",
     label: __("Docs"),
     onClick: () => window.open("https://paypilotlabs.com/roadmap/"),
   },
+  sourceCodeMenuOption,
   isCloudSettingsAvailable()
     ? {
         label: __("Manage billing"),
