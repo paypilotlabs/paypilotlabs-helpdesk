@@ -1,4 +1,5 @@
 {
+	"name": "paypilotlabs-helpdesk",
 	"private": true,
 	"scripts": {
 		"postinstall": "cd desk && yarn install",
