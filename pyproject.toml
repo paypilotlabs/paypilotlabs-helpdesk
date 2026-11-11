@@ -3,7 +3,10 @@ name = "helpdesk"
 authors = [
     { name = "Frappe Technologies Pvt Ltd", email = "hello@frappe.io"}
 ]
-description = "Open Source Customer Service Software"
+maintainers = [
+    { name = "PayPilotLabs" }
+]
+description = "PayPilotLabs Helpdesk: customer service desk, based on Frappe Helpdesk"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]
@@ -25,6 +28,7 @@ out_dir = "./helpdesk/public/desk"
 index_html_path = "./helpdesk/www/helpdesk/index.html"
 
 [project.urls]
-Homepage = "https://frappe.io/helpdesk"
-Repository = "https://github.com/frappe/helpdesk.git"
-"Bug Reports" = "https://github.com/frappe/helpdesk/issues"
+Homepage = "https://paypilotlabs.com"
+Repository = "https://github.com/paypilotlabs/paypilotlabs-helpdesk.git"
+"Bug Reports" = "https://paypilotlabs.com/roadmap/"
+Upstream = "https://github.com/frappe/helpdesk"
