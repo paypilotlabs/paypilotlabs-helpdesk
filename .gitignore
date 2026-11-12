@@ -47,5 +47,3 @@ desk/stats.html
 e2e/.auth
 playwright-report
 test-results
-# local frappe_docker checkout used by docker/build.sh
-.frappe_docker/
