@@ -33,6 +33,7 @@ export const useConfigStore = defineStore("config", () => {
   const isFeedbackMandatory = computed(
     () => !!parseInt(config.value.is_feedback_mandatory)
   );
+  const telephonyInstalled = computed(() => !!config.value.telephony_installed);
   const enableCommentReactions = computed(
     () => !!parseInt(config.value.enable_comment_reactions)
   );
@@ -46,6 +47,7 @@ export const useConfigStore = defineStore("config", () => {
     favicon,
     config,
     preferKnowledgeBase,
+    telephonyInstalled,
     skipEmailWorkflow,
     isFeedbackMandatory,
     teamRestrictionApplied,

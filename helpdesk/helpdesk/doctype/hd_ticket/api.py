@@ -113,6 +113,8 @@ def get_communications(ticket: str):
 
 
 def get_call_logs(ticket: str):
+    if "telephony" not in frappe.get_installed_apps():
+        return []
     linked_calls = frappe.db.get_all(
         "Dynamic Link",
         filters={"link_name": ticket, "parenttype": "TP Call Log"},

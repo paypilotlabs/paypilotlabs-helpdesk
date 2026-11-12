@@ -41,7 +41,9 @@ export const useTelephonyStore = defineStore("telephony", {
     async fetchCallIntegrationStatus() {
       try {
         this.isLoading = true;
-        const data = await call("telephony.api.is_call_integration_enabled");
+        const data = await call(
+          "helpdesk.api.telephony.get_call_integration_status"
+        );
         this.isTwilioEnabled = Boolean(data.twilio_enabled);
         this.isExotelEnabled = Boolean(data.exotel_enabled);
         this.defaultCallingMedium = data.default_calling_medium;

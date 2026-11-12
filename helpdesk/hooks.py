@@ -9,7 +9,8 @@ app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = BRAND["email"]
 app_license = "AGPLv3"
-required_apps = ["telephony"]
+# telephony (phone calls) is optional: install it next to helpdesk to switch the call features on.
+required_apps = []
 require_type_annotated_api_methods = True
 
 add_to_apps_screen = [

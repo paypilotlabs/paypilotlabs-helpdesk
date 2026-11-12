@@ -22,6 +22,7 @@ import { __ } from "@/translation";
 import SavedReplies from "./SavedReplies/SavedReplies.vue";
 import { Avatar } from "frappe-ui";
 import { useAuthStore } from "@/stores/auth";
+import { useConfigStore } from "@/stores/config";
 import General from "./General/General.vue";
 import SettingsGear from "~icons/lucide/settings";
 import ZapIcon from "~icons/lucide/zap";
@@ -145,6 +146,7 @@ export const tabs = computed(() => {
     },
     {
       label: __("Integrations"),
+      condition: () => useConfigStore().telephonyInstalled,
       items: [
         {
           label: __("Telephony"),
