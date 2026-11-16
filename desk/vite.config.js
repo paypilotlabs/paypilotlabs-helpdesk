@@ -1,6 +1,7 @@
 import frameworkUI from "@framework/ui/vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
+import fs from "fs";
 import path from "path";
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
@@ -8,6 +9,17 @@ import {
   getLocalFrappeUIDevConfig,
   importFrappeUIPlugin,
 } from "./vite-helpers";
+
+// The socket.io server's port from the bench's common_site_config.json (9000 when absent).
+// The dev server proxies /socket.io there, so the app can use its own origin in dev too.
+function getSocketioPort() {
+  try {
+    const config = path.resolve(__dirname, "../../../sites/common_site_config.json");
+    return JSON.parse(fs.readFileSync(config, "utf8")).socketio_port || 9000;
+  } catch {
+    return 9000;
+  }
+}
 
 export default defineConfig(async ({ mode }) => {
   const { useLocalFrappeUI, localFrappeUIAliases } = getLocalFrappeUIDevConfig({
@@ -93,6 +105,12 @@ export default defineConfig(async ({ mode }) => {
     ],
     server: {
       allowedHosts: true,
+      proxy: {
+        "^/socket.io": {
+          target: `http://127.0.0.1:${getSocketioPort()}`,
+          ws: true,
+        },
+      },
       fs: {
         // ".." = apps/helpdesk; "../.." = apps/, so the linked @framework/ui
         // (apps/frappe/ui) can be served from source in dev.
